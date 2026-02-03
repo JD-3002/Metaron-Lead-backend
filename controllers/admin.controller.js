@@ -22,6 +22,16 @@ exports.login = async (req, res) => {
   res.json({ message: 'Login successful' });
 };
 
+// Clear the auth cookie to log out the admin
+exports.logout = (req, res) => {
+  res.clearCookie('token', {
+    httpOnly: true,
+    sameSite: 'strict',
+    secure: process.env.NODE_ENV === 'production'
+  });
+  res.json({ message: 'Logout successful' });
+};
+
 
 // For initial setup, use this register function; later restrict/remove for security!
 exports.register = async (req, res) => {
