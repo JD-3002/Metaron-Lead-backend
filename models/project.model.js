@@ -26,6 +26,7 @@ const ProjectSchema = new mongoose.Schema(
   {
     name: { type: String, required: true },
     address: { type: String, required: true },
+    lead: { type: mongoose.Schema.Types.ObjectId, ref: 'Lead' },
     category: { type: String },
     propertyType: { type: String },
     dealType: { type: String },
